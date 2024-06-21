@@ -12,13 +12,13 @@
 
 <br/>
 
-`siocrypt` is a tool for encrypting/decrypting arbitrary data streams.
+`siocrypt` is a tool for encrypting/decrypting arbitrary data streams using [Data At Rest Encryption](https://github.com/essentialkaos/sio/blob/master/DARE.md) (_DARE_).
 
 ### Installation
 
 #### From source
 
-To build the `siocrypt` from scratch, make sure you have a working Go 1.20+ workspace (_[instructions](https://go.dev/doc/install)_), then:
+To build the `siocrypt` from scratch, make sure you have a working Go 1.21+ workspace (_[instructions](https://go.dev/doc/install)_), then:
 
 ```
 go install github.com/essentialkaos/siocrypt@latest
