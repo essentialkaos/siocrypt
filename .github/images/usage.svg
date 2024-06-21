@@ -55,7 +55,7 @@
 
   <text x="50%" y="24" text-anchor="middle"><tspan class="terminal">Terminal</tspan></text>
 
-  <text x="12" y="60"><tspan class="BB">Usage:</tspan> <tspan class="BB" fill="#6100DC">siocrypt</tspan> <tspan class="g">{options}</tspan> <tspan class="d">input</tspan> <tspan class="d">output</tspan></text>
+  <text x="12" y="60"><tspan class="BB">Usage:</tspan> <tspan class="BB" fill="#87D787">siocrypt</tspan> <tspan class="g">{options}</tspan> <tspan class="d">input</tspan> <tspan class="d">output</tspan></text>
   <text x="12" y="100">  Without an input file, tool reads data from standard input and writes to standard</text>
   <text x="12" y="120">  output if no output file is specified.</text>
   <text x="12" y="160">  Password provided via <tspan class="g">--password</tspan>/<tspan class="g">-p</tspan> option will be masked in process command. Also, </text>
