@@ -182,6 +182,8 @@ func processPassword() error {
 		if err != nil {
 			return fmt.Errorf("Can't hide provided password: %v", err)
 		}
+
+		options.Delete(OPT_PASSWORD)
 	} else if os.Getenv("SIOCRYPT_PASSWORD") != "" {
 		pwd = os.Getenv("SIOCRYPT_PASSWORD")
 		os.Setenv("SIOCRYPT_PASSWORD", "")
