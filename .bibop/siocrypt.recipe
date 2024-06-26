@@ -1,0 +1,26 @@
+# Bibop recipe for siocrypt
+# See more: https://kaos.sh/bibop
+
+fast-finish yes
+
+var password MyPassword1234
+
+command "-" "Calculate data checksum"
+  checksum-read test.txt data_checksum
+
+command "siocrypt -p {password} test.txt test.enc" "Encode data"
+  exit 0
+  exist test.enc
+  mode test.enc 600
+  !empty test.enc
+
+command "siocrypt -D -p {password} test.enc test.dec" "Decode data"
+  exit 0
+  exist test.dec
+  mode test.dec 600
+  !empty test.dec
+  checksum test.dec {data_checksum}
+
+command "siocrypt -D -p {password} test.enc" "Decode data to standard output"
+  exit 0
+  output-contains "TEST-DATA-1234"
