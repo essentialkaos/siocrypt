@@ -46,6 +46,12 @@ jobs:
       - name: Run tests
         run: make all
 
+      - name: Run test recipes with Bibop
+        uses: essentialkaos/bibop-action@v1
+        with:
+          path: .
+          recipe: .bibop/siocrypt.recipe
+
   Hadolint:
     name: Hadolint
     runs-on: ubuntu-latest
@@ -90,7 +96,7 @@ jobs:
     steps:
       - name: Check event type
         run: |
-          if [[ "${{github.event_name}}" != "pull_request" ]] ; then
+          if [[ "$GITHUB_EVENT_NAME" != "pull_request" ]] ; then
             echo "::notice::Event type is not 'pull_request', all job actions will be skipped"
           fi
 
