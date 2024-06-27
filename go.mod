@@ -3,7 +3,7 @@ module github.com/essentialkaos/siocrypt
 go 1.19
 
 require (
-	github.com/essentialkaos/ek/v12 v12.128.0
+	github.com/essentialkaos/ek/v12 v12.129.0
 	github.com/essentialkaos/sio v1.0.0
 	golang.org/x/crypto v0.24.0
 )
