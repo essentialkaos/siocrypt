@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        go: [ '1.21.x', '1.22.x' ]
+        go: [ '1.22.x', '1.23.x' ]
 
     steps:
       - name: Checkout
@@ -31,6 +31,9 @@ jobs:
 
       - name: Build binary
         run: make all
+
+      - name: Run tests
+        run: make test
 
   Hadolint:
     name: Hadolint
