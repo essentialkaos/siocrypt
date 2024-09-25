@@ -4,8 +4,8 @@ github.com/essentialkaos/depsy v1.3.0 h1:CN7bRgBU2jGTHSkg/Sh38eDUn7cvmaTp2sxFt2H
 github.com/essentialkaos/depsy v1.3.0/go.mod h1:kpiTAV17dyByVnrbNaMcZt2jRwvuXClUYOzpyJQwtG8=
 github.com/essentialkaos/ek/v13 v13.5.1 h1:xkr3d5uAzs69AqI0oKHjjZIsowKdR117AMBv+Dop4Fk=
 github.com/essentialkaos/ek/v13 v13.5.1/go.mod h1:KBOtJlrIC2etc/EXvMdbz1JeKmtkuVdK6uRW/ap0OPM=
-github.com/essentialkaos/sio v1.0.0 h1:+VZg0Z7+Cx8F/FmlczzTJYM6rq/LhTR45Rsditmu0Ec=
-github.com/essentialkaos/sio v1.0.0/go.mod h1:lKaW6IPMJ8GAEAiXe175zcEld370u3Nr546c22Kw5C8=
+github.com/essentialkaos/sio v1.1.0 h1:XPyScH8G08NIC94373ZHs+afPjZT5OKxQCuudbdFaIc=
+github.com/essentialkaos/sio v1.1.0/go.mod h1:Ds3E+uNM6KmJTk10G197ec3MFuuV8q15+ctlNNGR4HE=
 github.com/kr/pretty v0.3.1 h1:flRD4NNwYAUpkphVc1HcthR4KEIFJ65n8Mw5qdRn3LE=
 github.com/kr/pretty v0.3.1/go.mod h1:hoEshYVHaxMs3cyo3Yncou5ZscifuDolrwPKZanG3xk=
 github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
