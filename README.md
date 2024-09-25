@@ -2,7 +2,6 @@
 
 <p align="center">
   <a href="https://kaos.sh/l/siocrypt"><img src="https://kaos.sh/l/21be11a0cf23f4dcea42.svg" alt="Code Climate Maintainability" /></a>
-  <a href="https://kaos.sh/b/siocrypt"><img src="https://kaos.sh/b/07a41351-9d6d-45b1-9a02-344ef3b50466.svg" alt="Codebeat badge" /></a>
   <a href="https://kaos.sh/y/siocrypt"><img src="https://kaos.sh/y/31ef70b4136e4b48aab5d4b934e11eac.svg" alt="Codacy badge" /></a>
   <br/>
   <a href="https://kaos.sh/w/siocrypt/ci"><img src="https://kaos.sh/w/siocrypt/ci-push.svg" alt="GitHub Actions CI Status" /></a>
