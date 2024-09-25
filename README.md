@@ -2,10 +2,9 @@
 
 <p align="center">
   <a href="https://kaos.sh/l/siocrypt"><img src="https://kaos.sh/l/21be11a0cf23f4dcea42.svg" alt="Code Climate Maintainability" /></a>
-  <a href="https://kaos.sh/b/siocrypt"><img src="https://kaos.sh/b/07a41351-9d6d-45b1-9a02-344ef3b50466.svg" alt="Codebeat badge" /></a>
   <a href="https://kaos.sh/y/siocrypt"><img src="https://kaos.sh/y/31ef70b4136e4b48aab5d4b934e11eac.svg" alt="Codacy badge" /></a>
   <br/>
-  <a href="https://kaos.sh/w/siocrypt/ci"><img src="https://kaos.sh/w/siocrypt/ci.svg" alt="GitHub Actions CI Status" /></a>
+  <a href="https://kaos.sh/w/siocrypt/ci"><img src="https://kaos.sh/w/siocrypt/ci-push.svg" alt="GitHub Actions CI Status" /></a>
   <a href="https://kaos.sh/w/siocrypt/codeql"><img src="https://kaos.sh/w/siocrypt/codeql.svg" alt="GitHub Actions CodeQL Status" /></a>
   <a href="#license"><img src=".github/images/license.svg"/></a>
 </p>
@@ -20,7 +19,7 @@
 
 #### From source
 
-To build the `siocrypt` from scratch, make sure you have a working Go 1.21+ workspace (_[instructions](https://go.dev/doc/install)_), then:
+To build the `siocrypt` from scratch, make sure you have a working Go 1.22+ workspace (_[instructions](https://go.dev/doc/install)_), then:
 
 ```
 go install github.com/essentialkaos/siocrypt@latest
@@ -79,8 +78,8 @@ siocrypt --generate-man | sudo gzip > /usr/share/man/man1/siocrypt.1.gz
 
 | Branch | Status |
 |--------|----------|
-| `master` | [![CI](https://kaos.sh/w/siocrypt/ci.svg?branch=master)](https://kaos.sh/w/siocrypt/ci?query=branch:master) |
-| `develop` | [![CI](https://kaos.sh/w/siocrypt/ci.svg?branch=develop)](https://kaos.sh/w/siocrypt/ci?query=branch:develop) |
+| `master` | [![CI](https://kaos.sh/w/siocrypt/ci-push.svg?branch=master)](https://kaos.sh/w/siocrypt/ci-push?query=branch:master) |
+| `develop` | [![CI](https://kaos.sh/w/siocrypt/ci-push.svg?branch=develop)](https://kaos.sh/w/siocrypt/ci-push?query=branch:develop) |
 
 ### Contributing
 
