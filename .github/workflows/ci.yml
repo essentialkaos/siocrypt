@@ -32,6 +32,12 @@ jobs:
       - name: Build binary
         run: make all
 
+      - name: Run test recipes with Bibop
+        uses: essentialkaos/bibop-action@v1
+        with:
+          path: .
+          recipe: .bibop/mkcryptpasswd.recipe
+
   Hadolint:
     name: Hadolint
     runs-on: ubuntu-latest
