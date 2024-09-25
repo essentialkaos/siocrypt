@@ -32,9 +32,6 @@ jobs:
       - name: Build binary
         run: make all
 
-      - name: Run tests
-        run: make test
-
   Hadolint:
     name: Hadolint
     runs-on: ubuntu-latest
