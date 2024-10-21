@@ -14,7 +14,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/essentialkaos/ek/v13/errutil"
+	"github.com/essentialkaos/ek/v13/errors"
 	"github.com/essentialkaos/ek/v13/fmtc"
 	"github.com/essentialkaos/ek/v13/fsutil"
 	"github.com/essentialkaos/ek/v13/options"
@@ -101,7 +101,7 @@ func Run(gitRev string, gomod []byte) {
 
 	if !errs.IsEmpty() {
 		terminal.Error("Options parsing errors:")
-		terminal.Error(errs.String())
+		terminal.Error(errs.Error("- "))
 		os.Exit(1)
 	}
 
@@ -127,7 +127,7 @@ func Run(gitRev string, gomod []byte) {
 		os.Exit(0)
 	}
 
-	err := errutil.Chain(
+	err := errors.Chain(
 		processPassword,
 		validateOptions,
 	)
