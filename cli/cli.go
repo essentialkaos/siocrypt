@@ -71,7 +71,7 @@ const (
 // optMap contains information about all supported options
 var optMap = options.Map{
 	OPT_DECRYPT:  {Type: options.BOOL},
-	OPT_CIPHER:   {},
+	OPT_CIPHER:   {Value: CIPHER_C20P1305},
 	OPT_PASSWORD: {},
 	OPT_NO_COLOR: {Type: options.BOOL},
 	OPT_HELP:     {Type: options.BOOL},
@@ -409,7 +409,7 @@ func genUsage() *usage.Info {
 
 	info.AddOption(OPT_DECRYPT, "Decrypt data")
 	info.AddOption(OPT_PASSWORD, "Password for encrypting/decrypting", "?password")
-	info.AddOption(OPT_CIPHER, "Cipher to use {s}(AES256/C20P1305){!}", "cipher")
+	info.AddOption(OPT_CIPHER, "Cipher to use {s}(AES256/{_}C20P1305{!_}){!}", "cipher")
 	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
 	info.AddOption(OPT_HELP, "Show this help message")
 	info.AddOption(OPT_VER, "Show version")
