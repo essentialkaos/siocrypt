@@ -5,7 +5,7 @@ go 1.23.6
 toolchain go1.24.1
 
 require (
-	github.com/essentialkaos/ek/v13 v13.24.1
+	github.com/essentialkaos/ek/v13 v13.24.2
 	github.com/essentialkaos/sio v1.2.0
 	golang.org/x/crypto v0.37.0
 )
