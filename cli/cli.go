@@ -66,6 +66,8 @@ const (
 	CIPHER_C20P1305 = "C20P1305" // ChaCha20 Poly1305
 )
 
+const ENV_PASSWORD = "SIOCRYPT_PASSWORD"
+
 // ////////////////////////////////////////////////////////////////////////////////// //
 
 // optMap contains information about all supported options
@@ -101,7 +103,7 @@ func Run(gitRev string, gomod []byte) {
 
 	if !errs.IsEmpty() {
 		terminal.Error("Options parsing errors:")
-		terminal.Error(errs.Error("- "))
+		terminal.Error(errs.Error(" - "))
 		os.Exit(1)
 	}
 
@@ -184,9 +186,9 @@ func processPassword() error {
 		}
 
 		options.Delete(OPT_PASSWORD)
-	} else if os.Getenv("SIOCRYPT_PASSWORD") != "" {
-		pwd = os.Getenv("SIOCRYPT_PASSWORD")
-		os.Setenv("SIOCRYPT_PASSWORD", "")
+	} else if os.Getenv(ENV_PASSWORD) != "" {
+		pwd = os.Getenv(ENV_PASSWORD)
+		os.Setenv(ENV_PASSWORD, "")
 	}
 
 	if pwd == "" {
@@ -413,6 +415,8 @@ func genUsage() *usage.Info {
 	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
 	info.AddOption(OPT_HELP, "Show this help message")
 	info.AddOption(OPT_VER, "Show version")
+
+	info.AddEnv(ENV_PASSWORD, "Password for encrypting/decrypting {s-}(String){!}")
 
 	info.AddRawExample(
 		"cat data.enc | siocrypt -p TeSt1234 | grep John",
