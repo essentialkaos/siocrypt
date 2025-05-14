@@ -407,10 +407,10 @@ func genUsage() *usage.Info {
   output if no output file is specified.
 
   Password provided via {g}--password{!}/{g}-p{!} option will be masked in process command. Also, 
-  password can't be specified using {b}SIOCRYPT_PASSWORD{!} environment variable.`
+  password can't be specified using {m}SIOCRYPT_PASSWORD{!} environment variable.`
 
 	info.AddOption(OPT_DECRYPT, "Decrypt data")
-	info.AddOption(OPT_PASSWORD, "Password for encrypting/decrypting", "?password")
+	info.AddOption(OPT_PASSWORD, "Password for encrypting/decrypting", "password")
 	info.AddOption(OPT_CIPHER, "Cipher to use {s}(AES256/{_}C20P1305{!_}){!}", "cipher")
 	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
 	info.AddOption(OPT_HELP, "Show this help message")
