@@ -2,7 +2,7 @@ package cli
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 //                                                                                    //
-//                         Copyright (c) 2024 ESSENTIAL KAOS                          //
+//                         Copyright (c) 2025 ESSENTIAL KAOS                          //
 //      Apache License, Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>     //
 //                                                                                    //
 // ////////////////////////////////////////////////////////////////////////////////// //
@@ -14,7 +14,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/essentialkaos/ek/v13/errutil"
+	"github.com/essentialkaos/ek/v13/errors"
 	"github.com/essentialkaos/ek/v13/fmtc"
 	"github.com/essentialkaos/ek/v13/fsutil"
 	"github.com/essentialkaos/ek/v13/options"
@@ -41,7 +41,7 @@ import (
 // Basic utility info
 const (
 	APP  = "siocrypt"
-	VER  = "0.0.2"
+	VER  = "0.0.3"
 	DESC = "Tool for encrypting/decrypting arbitrary data streams"
 )
 
@@ -66,12 +66,14 @@ const (
 	CIPHER_C20P1305 = "C20P1305" // ChaCha20 Poly1305
 )
 
+const ENV_PASSWORD = "SIOCRYPT_PASSWORD"
+
 // ////////////////////////////////////////////////////////////////////////////////// //
 
 // optMap contains information about all supported options
 var optMap = options.Map{
 	OPT_DECRYPT:  {Type: options.BOOL},
-	OPT_CIPHER:   {},
+	OPT_CIPHER:   {Value: CIPHER_C20P1305},
 	OPT_PASSWORD: {},
 	OPT_NO_COLOR: {Type: options.BOOL},
 	OPT_HELP:     {Type: options.BOOL},
@@ -101,7 +103,7 @@ func Run(gitRev string, gomod []byte) {
 
 	if !errs.IsEmpty() {
 		terminal.Error("Options parsing errors:")
-		terminal.Error(errs.String())
+		terminal.Error(errs.Error(" - "))
 		os.Exit(1)
 	}
 
@@ -127,7 +129,7 @@ func Run(gitRev string, gomod []byte) {
 		os.Exit(0)
 	}
 
-	err := errutil.Chain(
+	err := errors.Chain(
 		processPassword,
 		validateOptions,
 	)
@@ -184,9 +186,9 @@ func processPassword() error {
 		}
 
 		options.Delete(OPT_PASSWORD)
-	} else if os.Getenv("SIOCRYPT_PASSWORD") != "" {
-		pwd = os.Getenv("SIOCRYPT_PASSWORD")
-		os.Setenv("SIOCRYPT_PASSWORD", "")
+	} else if os.Getenv(ENV_PASSWORD) != "" {
+		pwd = os.Getenv(ENV_PASSWORD)
+		os.Setenv(ENV_PASSWORD, "")
 	}
 
 	if pwd == "" {
@@ -409,10 +411,12 @@ func genUsage() *usage.Info {
 
 	info.AddOption(OPT_DECRYPT, "Decrypt data")
 	info.AddOption(OPT_PASSWORD, "Password for encrypting/decrypting", "?password")
-	info.AddOption(OPT_CIPHER, "Cipher to use {s}(AES256/C20P1305){!}", "cipher")
+	info.AddOption(OPT_CIPHER, "Cipher to use {s}(AES256/{_}C20P1305{!_}){!}", "cipher")
 	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
 	info.AddOption(OPT_HELP, "Show this help message")
 	info.AddOption(OPT_VER, "Show version")
+
+	info.AddEnv(ENV_PASSWORD, "Password for encrypting/decrypting {s-}(String){!}")
 
 	info.AddRawExample(
 		"cat data.enc | siocrypt -p TeSt1234 | grep John",
