@@ -41,7 +41,7 @@ import (
 // Basic utility info
 const (
 	APP  = "siocrypt"
-	VER  = "0.0.3"
+	VER  = "0.1.0"
 	DESC = "Tool for encrypting/decrypting arbitrary data streams"
 )
 
@@ -416,12 +416,12 @@ func genUsage() *usage.Info {
 	info.AddOption(OPT_DECRYPT, "Decrypt data")
 	info.AddOption(OPT_PASSWORD, "Password for encrypting/decrypting", "password")
 	info.AddOption(OPT_CIPHER, "Cipher to use {s}(AES256/{_}C20P1305{!_}){!}", "cipher")
-	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
 
 	if withSelfUpdate {
 		info.AddOption(OPT_UPDATE, "Update application to the latest version")
 	}
 
+	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
 	info.AddOption(OPT_HELP, "Show this help message")
 	info.AddOption(OPT_VER, "Show version")
 
