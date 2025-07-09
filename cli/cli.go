@@ -41,7 +41,7 @@ import (
 // Basic utility info
 const (
 	APP  = "siocrypt"
-	VER  = "0.0.3"
+	VER  = "0.1.0"
 	DESC = "Tool for encrypting/decrypting arbitrary data streams"
 )
 
@@ -56,6 +56,7 @@ const (
 	OPT_HELP     = "h:help"
 	OPT_VER      = "v:version"
 
+	OPT_UPDATE       = "U:update"
 	OPT_VERB_VER     = "vv:verbose-version"
 	OPT_COMPLETION   = "completion"
 	OPT_GENERATE_MAN = "generate-man"
@@ -79,6 +80,7 @@ var optMap = options.Map{
 	OPT_HELP:     {Type: options.BOOL},
 	OPT_VER:      {Type: options.MIXED},
 
+	OPT_UPDATE:       {Type: options.MIXED},
 	OPT_VERB_VER:     {Type: options.BOOL},
 	OPT_COMPLETION:   {},
 	OPT_GENERATE_MAN: {Type: options.BOOL},
@@ -124,6 +126,8 @@ func Run(gitRev string, gomod []byte) {
 			WithDeps(deps.Extract(gomod)).
 			Print()
 		os.Exit(0)
+	case withSelfUpdate && options.GetB(OPT_UPDATE):
+		os.Exit(updateBinary())
 	case options.GetB(OPT_HELP) || (!hasStdinData() && len(args) == 0):
 		genUsage().Print()
 		os.Exit(0)
@@ -412,6 +416,11 @@ func genUsage() *usage.Info {
 	info.AddOption(OPT_DECRYPT, "Decrypt data")
 	info.AddOption(OPT_PASSWORD, "Password for encrypting/decrypting", "password")
 	info.AddOption(OPT_CIPHER, "Cipher to use {s}(AES256/{_}C20P1305{!_}){!}", "cipher")
+
+	if withSelfUpdate {
+		info.AddOption(OPT_UPDATE, "Update application to the latest version")
+	}
+
 	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
 	info.AddOption(OPT_HELP, "Show this help message")
 	info.AddOption(OPT_VER, "Show version")
