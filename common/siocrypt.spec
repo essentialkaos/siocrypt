@@ -89,5 +89,8 @@ rm -rf %{buildroot}
 ################################################################################
 
 %changelog
+* Mon Aug 11 2025 Anton Novojilov <andy@essentialkaos.com> - 0.1.0-0
+- Dependencies update
+
 * Fri Jun 27 2025 Anton Novojilov <andy@essentialkaos.com> - 0.0.3-0
 - Initial build for kaos-repo
