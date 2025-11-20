@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/essentialkaos/ek/v13 v13.36.1
 	github.com/essentialkaos/sio v1.2.1
-	golang.org/x/crypto v0.44.0
+	golang.org/x/crypto v0.45.0
 )
 
 require (
