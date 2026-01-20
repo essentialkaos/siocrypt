@@ -17,7 +17,7 @@
 
 #### From source
 
-To build the `siocrypt` from scratch, make sure you have a working Go 1.23+ workspace (_[instructions](https://go.dev/doc/install)_), then:
+To build the `siocrypt` from scratch, make sure you have a working Go 1.24+ workspace (_[instructions](https://go.dev/doc/install)_), then:
 
 ```
 go install github.com/essentialkaos/siocrypt@latest
@@ -39,6 +39,20 @@ You can download prebuilt binaries for Linux and macOS from [EK Apps Repository]
 
 ```bash
 bash <(curl -fsSL https://apps.kaos.st/get) siocrypt
+```
+
+### Upgrading
+
+You can update prebuilt `siocrypt` binary to the latest release using [self-update feature](https://github.com/essentialkaos/.github/blob/master/APPS-UPDATE.md):
+
+```bash
+siocrypt --update
+```
+
+This command will runs a self-update in interactive mode. If you want to run a quiet update (_no output_), use the following command:
+
+```bash
+siocrypt --update=quiet
 ```
 
 ### Command-line completion

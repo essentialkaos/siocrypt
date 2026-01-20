@@ -41,7 +41,7 @@ import (
 // Basic utility info
 const (
 	APP  = "siocrypt"
-	VER  = "0.1.0"
+	VER  = "0.1.1"
 	DESC = "Tool for encrypting/decrypting arbitrary data streams"
 )
 
@@ -80,7 +80,6 @@ var optMap = options.Map{
 	OPT_HELP:     {Type: options.BOOL},
 	OPT_VER:      {Type: options.MIXED},
 
-	OPT_UPDATE:       {Type: options.MIXED},
 	OPT_VERB_VER:     {Type: options.BOOL},
 	OPT_COMPLETION:   {},
 	OPT_GENERATE_MAN: {Type: options.BOOL},
@@ -100,6 +99,7 @@ var removeOutputOnError bool
 // Run is main utility function
 func Run(gitRev string, gomod []byte) {
 	preConfigureUI()
+	preConfigureOptions()
 
 	args, errs := options.Parse(optMap)
 
@@ -167,6 +167,11 @@ func preConfigureUI() {
 	default:
 		colorTagApp, colorTagVer = "{*}{g}", "{g}"
 	}
+}
+
+// preConfigureOptions preconfigures command-line options based on build tags
+func preConfigureOptions() {
+	optMap.SetIf(withSelfUpdate, OPT_UPDATE, &options.V{Type: options.MIXED})
 }
 
 // configureUI configures user interface
