@@ -61,17 +61,17 @@ You can generate completion for `bash`, `zsh` or `fish` shell.
 
 Bash:
 ```bash
-sudo siocrypt --completion=bash 1> /etc/bash_completion.d/siocrypt
+siocrypt --completion=bash | sudo tee /etc/bash_completion.d/siocrypt > /dev/null
 ```
 
 ZSH:
 ```bash
-sudo siocrypt --completion=zsh 1> /usr/share/zsh/site-functions/siocrypt
+siocrypt --completion=zsh | sudo tee /usr/share/zsh/site-functions/siocrypt > /dev/null
 ```
 
 Fish:
 ```bash
-sudo siocrypt --completion=fish 1> /usr/share/fish/vendor_completions.d/siocrypt.fish
+siocrypt --completion=fish | sudo tee /usr/share/fish/vendor_completions.d/siocrypt.fish > /dev/null
 ```
 
 ### Man documentation
