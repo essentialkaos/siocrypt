@@ -41,7 +41,7 @@ import (
 // Basic utility info
 const (
 	APP  = "siocrypt"
-	VER  = "0.1.1"
+	VER  = "0.2.0"
 	DESC = "Tool for encrypting/decrypting arbitrary data streams"
 )
 
