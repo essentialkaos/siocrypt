@@ -14,22 +14,22 @@ import (
 	"os"
 	"strings"
 
-	"github.com/essentialkaos/ek/v13/errors"
-	"github.com/essentialkaos/ek/v13/fmtc"
-	"github.com/essentialkaos/ek/v13/fsutil"
-	"github.com/essentialkaos/ek/v13/options"
-	"github.com/essentialkaos/ek/v13/secstr"
-	"github.com/essentialkaos/ek/v13/support"
-	"github.com/essentialkaos/ek/v13/support/deps"
-	"github.com/essentialkaos/ek/v13/system/procname"
-	"github.com/essentialkaos/ek/v13/terminal"
-	"github.com/essentialkaos/ek/v13/terminal/tty"
-	"github.com/essentialkaos/ek/v13/usage"
-	"github.com/essentialkaos/ek/v13/usage/completion/bash"
-	"github.com/essentialkaos/ek/v13/usage/completion/fish"
-	"github.com/essentialkaos/ek/v13/usage/completion/zsh"
-	"github.com/essentialkaos/ek/v13/usage/man"
-	"github.com/essentialkaos/ek/v13/usage/update"
+	"github.com/essentialkaos/ek/v14/errors"
+	"github.com/essentialkaos/ek/v14/fmtc"
+	"github.com/essentialkaos/ek/v14/fsutil"
+	"github.com/essentialkaos/ek/v14/options"
+	"github.com/essentialkaos/ek/v14/secstr"
+	"github.com/essentialkaos/ek/v14/support"
+	"github.com/essentialkaos/ek/v14/support/deps"
+	"github.com/essentialkaos/ek/v14/system/procname"
+	"github.com/essentialkaos/ek/v14/terminal"
+	"github.com/essentialkaos/ek/v14/terminal/tty"
+	"github.com/essentialkaos/ek/v14/usage"
+	"github.com/essentialkaos/ek/v14/usage/completion/bash"
+	"github.com/essentialkaos/ek/v14/usage/completion/fish"
+	"github.com/essentialkaos/ek/v14/usage/completion/zsh"
+	"github.com/essentialkaos/ek/v14/usage/man"
+	"github.com/essentialkaos/ek/v14/usage/update"
 
 	"golang.org/x/crypto/scrypt"
 
@@ -105,7 +105,7 @@ func Run(gitRev string, gomod []byte) {
 
 	if !errs.IsEmpty() {
 		terminal.Error("Options parsing errors:")
-		terminal.Error(errs.Error(" - "))
+		terminal.Error(errs.ErrorWithPrefix(" - "))
 		os.Exit(1)
 	}
 
@@ -336,7 +336,7 @@ func deriveKey(input, output *os.File) ([]byte, error) {
 		}
 	}
 
-	key, err := scrypt.Key(password.Data, salt, 32768, 16, 1, 32)
+	key, err := scrypt.Key(password.Bytes(), salt, 32768, 16, 1, 32)
 
 	if err != nil {
 		return nil, fmt.Errorf("Can't derive key from password: %v", err)
@@ -351,7 +351,7 @@ func deriveKey(input, output *os.File) ([]byte, error) {
 func getCipherSuite() []byte {
 	switch strings.ToUpper(options.GetS(OPT_CIPHER)) {
 	case CIPHER_AES256:
-		return []byte{sio.AES_256_GCM}
+		return []byte{sio.AES_GCM}
 	case CIPHER_C20P1305:
 		return []byte{sio.CHACHA20_POLY1305}
 	}
